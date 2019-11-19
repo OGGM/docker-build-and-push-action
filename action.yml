@@ -9,6 +9,8 @@ inputs:
     required: true
   name:
     required: true
+  build_args:
+    default: ''
   tags:
     default: 'latest'
   date_tag:

@@ -17,7 +17,10 @@ set -x
 cd "${INPUT_PATH}"
 DATE_ID="$(date +%Y%m%d)"
 
-EXTRA_ARGS=( --build-arg GITHUB_SHA --build-arg GITHUB_REF --build-arg GITHUB_REPOSITORY )
+EXTRA_ARGS=()
+for BARG in ${INPUT_BUILD_ARGS//,/ }; do
+    EXTRA_ARGS+=( --build-arg "${BARG}" )
+done
 if [[ ${INPUT_FORCE_PULL} != false ]]; then
     EXTRA_ARGS+=( --pull )
 fi
