@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+if [[ -n "${INPUT_ONLY_ON_REPO}" && "${INPUT_ONLY_ON_REPO^^}" != "${GITHUB_REPOSITORY^^}" ]]; then
+    echo "Skipping on unexpected repository"
+    exit 0
+fi
+
 if [[ -z "${INPUT_PATH}" || -z "${INPUT_NAME}" ]]; then
     echo "Required input parameter is empty"
     exit -1
@@ -31,6 +36,11 @@ fi
 docker build "${EXTRA_ARGS[@]}" -t "${INPUT_TMP_TAG}" .
 
 if [[ ${INPUT_NO_PUSH} != false ]]; then
+    exit 0
+fi
+
+if [[ -n "${INPUT_PUSH_ON_REPO}" && "${INPUT_PUSH_ON_REPO^^}" != "${GITHUB_REPOSITORY^^}" ]]; then
+    echo "Skipping upload on unexpected repository"
     exit 0
 fi
 

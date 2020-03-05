@@ -25,6 +25,10 @@ inputs:
     default: false
   tmp_tag:
     default: 'tmp-build-tag:latest'
+  only_on_repo:
+    default: ''
+  push_on_repo:
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
