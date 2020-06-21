@@ -29,6 +29,8 @@ inputs:
     default: ''
   push_on_repo:
     default: ''
+  buildkit:
+    default: true
 runs:
   using: 'docker'
   image: 'Dockerfile'

@@ -19,6 +19,10 @@ fi
 
 set -x
 
+if [[ ${INPUT_BUILDKIT} == true ]]; then
+    export DOCKER_BUILDKIT=1
+fi
+
 cd "${INPUT_PATH}"
 DATE_ID="$(date +%Y%m%d)"
 
