@@ -5,6 +5,8 @@ inputs:
     default: ''
   pass:
     default: ''
+  registry:
+    default: 'registry-1.docker.io'
   path:
     required: true
   name:

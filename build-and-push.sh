@@ -13,7 +13,7 @@ fi
 
 if [[ -n "${INPUT_USER}" && -n "${INPUT_PASS}" ]]; then
     echo "Logging into docker registry..."
-    printf '%s\n' "${INPUT_PASS}" | docker login -u "${INPUT_USER}" --password-stdin
+    printf '%s\n' "${INPUT_PASS}" | docker login -u "${INPUT_USER}" --password-stdin "${INPUT_REGISTRY}"
     echo "Ok"
 fi
 
